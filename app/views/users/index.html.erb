@@ -1,0 +1,21 @@
+<h1>USERS INDEX</h1>
+
+<% if params[:id] %>
+	<%= params[:id] %>
+<% end %>
+
+<ul>
+<% @users.each do |u| %>
+	<li><%= u.name %> | <a href='/users/<%= u.id %>'>Profile</a></li>
+<% end %>
+</ul>
+
+<hr>
+
+<% flash[:errors].each do |x| %>
+
+	<%= x %>
+
+<% end%>
+
+<a href='/secrets'>Secrets</a> | <a href="/users/new">Register</a>

@@ -1,0 +1,17 @@
+<h1>USERS NEW</h1>
+<form action='/users' method='POST'>
+	<label for='Name'>Name</label> <input type="text" name='user[name]' id='Name'><br>
+	<label for='Email'>Email</label> <input type="email" name='user[email]' id='Email'><br>
+	<label for='Password'>Password</label> <input type="password" name='user[password]' id='Password'><br>
+	<label for='Password Confirmation'>Confirm</label> <input type="password" name='user[password_confirmation]' id='Password Confirmation'><br>
+	<button type="submit" value='Join'>Join</button>
+	<input type="hidden" name='authenticity_token' value="<%= form_authenticity_token %>">
+</form>
+
+<% if flash[:errors]
+	flash[:errors].each do |x| %>
+
+		<%= x %><br>
+
+	<% end %>
+<% end %>

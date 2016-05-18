@@ -1,0 +1,54 @@
+<h1>USERS SHOW</h1>
+
+<hr>
+
+<%= @user.name %>
+
+<hr>
+
+<a href="/users/<%= @user.id %>/edit">Edit Profile</a>
+
+<hr>
+<h4>Secrets</h4>
+<% if @secrets %>
+	<% @secrets.each do |c| %>
+		<%= c.content %> | <%= c.likes.count %> likes<br>
+		<form action='/secrets/<%= c.id %>' method='post'>
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<input name="_method" value="delete" type="hidden">
+			<button type="submit" id='Delete'>Delete</button>
+		</form>
+	<% end %>
+<% end %>
+
+<hr>
+
+<h4>Add Secret</h4>
+
+<form action='/secrets/' method='POST'>
+	<label for='New Secret'>New Secret</label> <input type="text" name='secret[content]' id="New Secret"/>
+	<button type='submit' value='Submit'>Create Secret</button>
+	<input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'/>
+</form>
+
+<hr>
+
+<form action='/sessions/log' method='post'>
+	<button type='submit' name='log out'>Log Out</button>
+</form>
+
+<hr>
+
+<% if flash[:errors]
+	flash[:errors].each do |x| %>
+
+		<%= x %>
+	<% end %>
+<% end %>
+
+<% if flash[:success]
+	flash[:success].each do |x| %>
+
+		<%= x %>
+	<% end %>
+<% end %>

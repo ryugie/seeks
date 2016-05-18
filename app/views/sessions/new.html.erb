@@ -1,0 +1,13 @@
+<h1>SESSIONS NEW</h1>
+
+<form method='POST' action='/sessions'>
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<label for='Email'>Email</label><input type="email" name='email' id="Email"> <br>
+	<label for='Password'>Password</label><input type="password" name='password' id="Password"> <br>
+	<!-- <input type="submit" value="Log In"> -->
+	<button type="submit" id="Log In">Log In</button>
+</form>
+
+<hr>
+
+<a href="/users/new">Register</a>
